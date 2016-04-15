@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="es">
+	<head>
+	  <meta charset="utf-8">
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Cytoscape</title>
+	  <meta name="description" content="Getting started with Cytoscape">
+	  <meta name="author" content="Carlos Pi">
+	  <link rel="stylesheet" href="style.css">
+
+		<script type="text/javascript" src="js/cytoscape/cytoscape.js"></script>
+		<script type="text/javascript" src="js/inputgenerator.js"></script>
+		<script type="text/javascript" src="js/algorithm.js"></script>
+	</head>
+
+	<body>
+		<form name="personalizedinput" method="get">
+			number of Offices: <input type="number" id="totalOffices" name="totalOffices" required>
+			number of Roads: <input type="number" id="totalRoads" name="totalRoads" required>
+			<input type="button" onclick="generatePersonalizedInput(this.form)" value="OK">
+			<input type="button" onclick="executeAlgorithm()" name="play" value="Play!" disabled>
+			<br>Visualization
+			<input type="radio" name="opc" value="random" checked> Random
+			<input type="radio" name="opc" value="grid"> Grid
+			<input type="radio" name="opc" value="concentric"> Concentric
+			<input type="radio" name="opc" value="cose"> Cose
+			<input type="radio" name="opc" value="circle"> Circle
+
+		</form>
+
+		<div id="cytoscape"></div>
+	</body>
+
+</html>

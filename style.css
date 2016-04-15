@@ -1,0 +1,7 @@
+#cytoscape{
+	width: 100%;
+	height: 500px;
+	display: block;
+	margin-top: 1em;
+	border: 1px solid #463D3D;
+}
