@@ -7,10 +7,11 @@ function generatePersonalizedInput(form){
 	var totalOffices = form.totalOffices.value;
 	var layout = radioChecked();
 
-	if(totalOffices - 1 > totalRoads)
-		alert("The number of roads have to be at least numberOffices - 1");
-	else if(totalOffices <= 0 || totalRoads <= 0)
+
+	if(totalOffices <= 0 || totalRoads <= 0)
 		alert("Are you kidding me?");
+	else if(totalOffices - 1 > totalRoads)
+			alert("The number of roads have to be at least numberOffices - 1");
 	else{
 		console.log("The input is correct");
 		generateCytoscapeGraph(totalOffices, totalRoads,layout);
@@ -66,7 +67,8 @@ function generateStyle(color, linecolor){
 							"\t\t\t\t'label': '" + "data(weight)" + "',\n" +
 							"\t\t\t\t'line-color': '" + linecolor + "',\n" +
 							"\t\t\t\t'line-style': '" + "solid" + "',\n" +
-							"\t\t\t\t'target-arrow-shape': '" + "none" + "',\n" +
+							"\t\t\t\t'target-arrow-shape': '" + "triangle" + "',\n" +
+							"\t\t\t\t'target-arrow-color': '" + linecolor + "',\n" +
 							"\t\t\t\t'text-outline-color': '" + "white" + "',\n" +
 							"\t\t\t\t'text-outline-width': '" + 2 + "',\n" +
 							"\t\t\t\t'width': " + 3 + "\n" +
@@ -94,6 +96,16 @@ function generateElements(totalOffices, totalRoads){
 
 	var elements = "\telements: [ // list of graph elements to start with\n";
 
+	//Creating node's information
+	for(var i = 0 ; i < totalOffices ; i++){
+		var node = 	"\t\t{"+ " // node "+ i +"\n " +
+					"\t\t\tdata: { id: '"+ i +"' }\n" +
+					"\t\t},\n";
+
+		elements += node;
+	}
+
+	//Creating edge's information
 	for (var i = 0 ; i < totalRoads ; i++){
 
 		var randomFirstOffice, randomSecondOffice, randomDistance;
@@ -114,20 +126,15 @@ function generateElements(totalOffices, totalRoads){
 			randomDistance = Math.round(Math.random() * distance) + 1;
 			// console.log(i+1 + ": " + randomFirstOffice + " " + randomSecondOffice + " " + randomDistance);
 		}
-		//Let's go to create JSON data!
-		var sFirstOffice = 	"\t\t{"+ " // node "+ randomFirstOffice +"\n " +
-												"\t\t\tdata: { id: '"+ randomFirstOffice +"' }\n" +
-												"\t\t},\n";
-		var sSecondOffice = "\t\t{"+ " // node "+ randomSecondOffice +"\n " +
-												"\t\t\tdata: { id: '"+ randomSecondOffice +"' }\n" +
-												"\t\t},\n";
 		//It's very important that the edge's identifier be unique
-						var sEdge = "\t\t{"+ " // edge "+ randomFirstOffice + "_" + randomSecondOffice+ "_" + i +"\n " +
-												"\t\t\tdata: { id: '"+ randomFirstOffice + "_" + randomSecondOffice+ "_" + i +  "',\n" +
-												"\t\t\tsource: '"+randomFirstOffice+"', target: '" + randomSecondOffice + "',\n" +
-												"\t\t\tweight: " + randomDistance + " }\n" +
+						var sEdge = "\t\t{"+ " // edge e"+ i +"\n " +
+												"\t\t\tdata: \t{\n" +
+												"\t\t\t\tid: 'e"+ i +  "',\n" +
+												"\t\t\t\tsource: '"+randomFirstOffice+"', target: '" + randomSecondOffice + "',\n" +
+												"\t\t\t\tweight: " + randomDistance + "\n" +
+												"\t\t\t}\n" + 
 												"\t\t},\n";
-												
+
 		// console.log(sFirstOffice);
 		// console.log(sSecondOffice);
 		// console.log(sEdge);
@@ -137,7 +144,7 @@ function generateElements(totalOffices, totalRoads){
 			sEdge = sEdge.substring(0,sEdge.length - 2) + "\n";
 		}
 
-		elements += sFirstOffice + sSecondOffice + sEdge;
+		elements += sEdge;
 		// if(!btotalOffices[randomFirstOffice] && !btotalOffices[randomSecondOffice]){
 		// 	console.log(randomFirstOffice + " " + randomSecondOffice + " " + randomDistance);
 		// }
