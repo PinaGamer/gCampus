@@ -49,6 +49,7 @@ function generateCytoscapeGraph(totalOffices, totalRoads, layout){
 }
 
 function generateStyle(color, linecolor){
+	var arrowform = "none";
 	var style = "\tstyle: [ // the stylesheet for the graph\n" +
 							"\t\t{\n" +
 							"\t\t\tselector: 'node',\n" +
@@ -67,7 +68,7 @@ function generateStyle(color, linecolor){
 							"\t\t\t\t'label': '" + "data(weight)" + "',\n" +
 							"\t\t\t\t'line-color': '" + linecolor + "',\n" +
 							"\t\t\t\t'line-style': '" + "solid" + "',\n" +
-							"\t\t\t\t'target-arrow-shape': '" + "triangle" + "',\n" +
+							"\t\t\t\t'target-arrow-shape': '" + arrowform + "',\n" +
 							"\t\t\t\t'target-arrow-color': '" + linecolor + "',\n" +
 							"\t\t\t\t'text-outline-color': '" + "white" + "',\n" +
 							"\t\t\t\t'text-outline-width': '" + 2 + "',\n" +
