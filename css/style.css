@@ -1,7 +1,18 @@
 #cytoscape{
-	width: 100%;
-	height: 500px;
+	height: 550px;
 	display: block;
-	margin-top: 1em;
 	border: 1px solid #463D3D;
 }
+
+body .container-fluid .main {
+	padding: 1em;
+}
+
+body .container-fluid .main .col-md-3 .form-horizontal{
+	padding-left: 1em;
+}
+
+body .container-fluid .main .col-md-3  p{
+	font-size: 1.5em;
+}
+
