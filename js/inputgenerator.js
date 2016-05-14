@@ -1,8 +1,20 @@
 //CONSTANTS
 const distance = 100;
 
+function generateInput(form){
+	if(form.inputformat.value =="random")
+		generateRandomInput(form);
+	else
+		generatePersonalizedInput(form);
+}
 
+//DEVELOPING...
 function generatePersonalizedInput(form){
+	var text = form.personalinputtext.value;
+
+}
+
+function generateRandomInput(form){
 	var totalRoads = form.totalRoads.value;
 	var totalOffices = form.totalOffices.value;
 	var layout = radioChecked();
