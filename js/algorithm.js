@@ -2,6 +2,17 @@ function executeAlgorithm(){
 
   var elements = cy.elements();
   var nodes = cy.nodes();
+  var inefficientRoads = cy.edges().toArray();
+  var adjacencymat = [];
+  var inefficientRoadsCollection;
+
+  //Initializing adjacency matrix
+  for (var i = 0 ; i < nodes.length ; i++){
+    adjacencymat[i] = [];
+    for(var j = 0 ; j < nodes.length ; j++)
+      adjacencymat[i][j] = false;
+  }
+
 
   for (var i = 0 ; i < nodes.length ; i++){
 
@@ -21,21 +32,44 @@ function executeAlgorithm(){
 
     //End node
     for (var j = 0 ; j < nodes.length ; j ++){
-      if(i != j){
+
+      if(i != j && adjacencymat[i][j] === false){
         console.log("To node " + nodes[j].data('id'))
         var pathEdges = bf.pathTo(nodes[j]).edges();
 
+        //Transform the shortest path to array
+        var shortestPathArray = pathEdges.toArray();
+
+        // console.log(shortestPathArray);
+
+        inefficientRoadsCollection = getInefficientRoads(inefficientRoads, shortestPathArray);
+
+        //Update boolean matrix
+        adjacencymat[i][j] = true;
+        adjacencymat[j][i] = true;
+
+        //DEBUGGING
         for(var k = 0 ; k < pathEdges.length ; k++)
           console.log(pathEdges[k].data());
       }
-        // printCollection(pathEdges);
     }
   }
-
+  //DEBUGGING
+  console.log("The inefficient roads are: ");
+  for(var k = 0 ; k < inefficientRoadsCollection.length ; k++)
+    console.log(inefficientRoadsCollection[k].data());
 }
 
-function printCollection(collection){
-  for(var i = 0 ; i < collection.length ; i++){
-    console.log(collection[i].data());
-  }
+function getInefficientRoads(inefficientRoadsArray, shortestPath){
+
+  for(var i = 0 ; i < shortestPath.length ; i ++)
+    if(inefficientRoadsArray.includes(shortestPath[i])){
+      var pos = inefficientRoadsArray.indexOf(shortestPath[i]);
+      inefficientRoadsArray.splice(pos,1);
+    }
+
+  var inefficientRoads = cy.collection(inefficientRoadsArray);
+
+  return inefficientRoads;
 }
+
