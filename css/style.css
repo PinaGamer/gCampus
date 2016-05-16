@@ -12,7 +12,12 @@ body .container-fluid .main .col-md-3 .form-horizontal{
 	padding-left: 1em;
 }
 
-body .container-fluid .main .col-md-3  p{
+body .container-fluid .main .col-md-3 p{
 	font-size: 1.5em;
 }
-
+body .container-fluid .main .col-md-3 .visualization{
+	margin-left: 1em;
+}
+body .container-fluid .main .col-md-3 .finalbuttons{
+	margin-left: 1em;
+}

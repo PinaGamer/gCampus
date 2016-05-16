@@ -8,10 +8,9 @@ function generateInput(form){
 		generatePersonalizedInput(form);
 }
 
-//DEVELOPING...
 function generatePersonalizedInput(form){
-	var text = form.personalinputtext.value;
-
+	if(analyzerPersonalizedInputSyntax(form))
+		alert("Correct personalized input");
 }
 
 function generateRandomInput(form){

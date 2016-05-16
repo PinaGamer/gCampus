@@ -13,9 +13,12 @@
 	  	<!-- My own stylesheet-->
 	  	<link rel="stylesheet" href="css/style.css">
 
+	  	<!-- Add Cytoscape library -->
+	  	<script type="text/javascript" src="cytoscape/cytoscape.js"></script>
+
 	  	<!-- My own scripts-->
-		<script type="text/javascript" src="cytoscape/cytoscape.js"></script>
 		<script type="text/javascript" src="js/inputgenerator.js"></script>
+		<script type="text/javascript" src="js/pianalyzer.js"></script>
 		<script type="text/javascript" src="js/algorithm.js"></script>
 		<script type="text/javascript" src="js/checkinput.js"></script>
 	</head>
@@ -36,7 +39,7 @@
 						<!--Random Input -->
 						<div class="radio">
 							<label>
-    							<input type="radio" name="inputformat" id="randominputrad" value="random" onclick="checkInput()">
+    							<input type="radio" name="inputformat" id="randominputrad" value="random" onclick="checkInput()" checked>
    								<p>Random input</p>
   							</label>
   							<div class="form-group randominput">
@@ -55,12 +58,12 @@
    								<p>Personalized input</p>
   							</label>
 							<div class="form-group personalizedinput">
-								<textarea class="form-control" name="personalinputtext" id="personalinputtext" rows="3" placeholder=""></textarea>
+								<textarea class="form-control" name="personalinputtext" id="personalinputtext" rows="4" placeholder=" 2 3 //NumberOffices NumberRoads&#10 0 1 34 //StartOffice FinalOffice Distance &#10 1 2 12 //2nd road&#10 2 0 4 //3rd road" disabled></textarea>
 							</div>
 						</div>
 
 						<!--Visualization of the graph-->							
-						<div class="form-group">
+						<div class="form-group visualization">
 							<p>Visualization</p>
 							<div class="radio">
 								<label>
@@ -90,7 +93,7 @@
 						</div>
 
 						<!-- Confirmation -->
-						<div class="form-group">
+						<div class="form-group finalbuttons">
 							<button type="button" onclick="generateInput(this.form)" class="btn btn-success">OK</button>
 							<button type="button" onclick="executeAlgorithm()" class="btn btn-danger" disabled>PLAY</button>
 
