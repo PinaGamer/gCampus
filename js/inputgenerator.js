@@ -1,6 +1,8 @@
 //CONSTANTS
 const distance = 100;
 
+
+//FUNCTIONS
 function generateInput(form){
 	if(form.inputformat.value =="random")
 		generateRandomInput(form);
