@@ -1,10 +1,14 @@
+var inefficientRoadsCollection;
+var efficientRoadsCollection;
+
 function executeAlgorithm(){
 
   var elements = cy.elements();
   var nodes = cy.nodes();
   var inefficientRoads = cy.edges().toArray();
   var adjacencymat = [];
-  var inefficientRoadsCollection;
+  
+  
 
   //Initializing adjacency matrix
   for (var i = 0 ; i < nodes.length ; i++){
@@ -26,15 +30,16 @@ function executeAlgorithm(){
     }
 
     //Start node
-    console.log("\nFrom node " + nodes[i].data('id'));
+    // console.log("\nFrom node " + nodes[i].data('id'));
     var bf = elements.dijkstra(options);
+
     
 
     //End node
     for (var j = 0 ; j < nodes.length ; j ++){
 
       if(i != j && adjacencymat[i][j] === false){
-        console.log("To node " + nodes[j].data('id'))
+        // console.log("To node " + nodes[j].data('id'))
         var pathEdges = bf.pathTo(nodes[j]).edges();
 
         //Transform the shortest path to array
@@ -49,15 +54,26 @@ function executeAlgorithm(){
         adjacencymat[j][i] = true;
 
         //DEBUGGING
-        for(var k = 0 ; k < pathEdges.length ; k++)
-          console.log(pathEdges[k].data());
+        // for(var k = 0 ; k < pathEdges.length ; k++)
+        //   console.log(pathEdges[k].data());
       }
+
     }
   }
+
+  efficientRoadsCollection = cy.edges(!inefficientRoadsCollection);
+  printEfficientRoads(efficientRoadsCollection);
+
   //DEBUGGING
-  console.log("The inefficient roads are: ");
-  for(var k = 0 ; k < inefficientRoadsCollection.length ; k++)
-    console.log(inefficientRoadsCollection[k].data());
+  if(inefficientRoadsCollection.length > 0){
+    console.log("The inefficient roads are: ");
+    printInefficientRoads(inefficientRoadsCollection);
+    for(var k = 0 ; k < inefficientRoadsCollection.length ; k++)
+      console.log(inefficientRoadsCollection[k].data());
+  }
+  else
+    console.log("There isn't any inefficient road. Congratulations!");
+  
 }
 
 function getInefficientRoads(inefficientRoadsArray, shortestPath){

@@ -1,23 +1,29 @@
-function nodeSelected(node){
-  node.animate({
+function EffEdgeSelected(edge){
+  edge.animate({
     style: {
-      backgroundColor: 'green'
+      'line-color': '#40C70B'
     }
   },{
     duration: 500
   })
+}
 
-  .delay(500)
-
-  .animate({
+function UneffEdgeSelected(edge){
+  edge.animate({
     style: {
-      backgroundColor: 'red'
+      'line-color': '#C6090C'
     }
   },{
     duration: 500
-  });
+  })
 }
 
-function edgeSelected(){
+function printEfficientRoads(efficientRoads){
+  for(var i = 0 ; i < efficientRoads.length ; i++)
+    EffEdgeSelected(efficientRoads[i]);
+}
 
+function printInefficientRoads(inefficientRoads){
+  for(var i = 0 ; i < inefficientRoads.length ; i++)
+    UneffEdgeSelected(inefficientRoads[i]);
 }
