@@ -4,7 +4,7 @@ const distance = 100;
 
 //FUNCTIONS
 function generateInput(form){
-	if(form.inputformat.value =="random")
+	if(form.inputformat[0].value =="random")
 		generateRandomInput(form);
 	else
 		generatePersonalizedInput(form);
