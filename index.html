@@ -10,6 +10,9 @@
 	  	<!-- Bootstrap 3.3.6-->
 	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+	  	<!-- Google Fonts -->
+	  	<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300italic' rel='stylesheet' type='text/css'>
+
 	  	<!-- My own stylesheet-->
 	  	<link rel="stylesheet" href="css/style.css">
 
@@ -21,16 +24,27 @@
 		<script type="text/javascript" src="js/pianalyzer.js"></script>
 		<script type="text/javascript" src="js/algorithm.js"></script>
 		<script type="text/javascript" src="js/checkinput.js"></script>
+		<script type="text/javascript" src="js/animation.js"></script>
+		
 	</head>
 
 	<body>
 		<div class="container-fluid">
 
+			<!-- Header -->
+			<div class="headerpage">
+				<div class="col-md-5">
+					<h1>Inefficient roads finder</h1>
+					<h2>Developed with CytoscapeJS</h2>
+					<a href="http://js.cytoscape.org/"><img class="cytoscapelogo" src="http://js.cytoscape.org/img/cytoscape-logo.svg" class="img-responsive" alt="CytoscapeJS logo"></a><br>
+				</div>
+			</div>
 			<!-- MAIN DIV-->
 			<div class="row main">
 
 				<!-- Screen Cytoscape -->
-				<div class="col-md-9" id="cytoscape"></div>
+				<div class="col-md-9" id="cytoscape">
+				</div>
 
 				<!-- Input -->
 				<div class="col-md-3">
@@ -100,8 +114,18 @@
 						</div>
 					</form>
 				</div>
+				<div class="col-md-9 legend">
+					The original idea comes from a 
+					<a href="https://code.google.com/codejam/contest/4284486/dashboard#s=p2">Google CodeJam problem</i></a>  called <i>gCampus</i>.  The goal is to detect the inefficient roads (edges) of any campus (graph) which connect offices (nodes). You only have to choose your favourite input data and then, generate the graph clicking OK, then, once graph is generated you have to press PLAY button. Finally, the <b style="color: #C6090C">unefficient roads</b> (if there is any) and the <b style="color: #40C70B">efficient roads</b> will display in the graph.<br>
+				</div>
+
+				<!-- Progress bar -->
+				<!-- <div class="col-md-9 progress">
+				  	<div class="progress-bar progress-bar-striped" role="progressbar" id="progressalg" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 3%">
+				    	0.0%
+				  	</div> -->
+				</div>
 			</div>
-		</div>
 	</body>
 
 </html>
