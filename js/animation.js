@@ -46,8 +46,9 @@ function blinkingIneffEdge(edge){
 }
 
 function blinkingInefficientRoads(inefficientRoads){
-  for(var i = 0 ; i < inefficientRoads.length ; i++)
-    blinkingIneffEdge(inefficientRoads[i]);
+  inefficientRoads.forEach(function(edge){
+    blinkingIneffEdge(edge);
+  });
 }
 
 function printEfficientRoads(efficientRoads){

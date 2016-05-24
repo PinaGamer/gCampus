@@ -65,6 +65,7 @@ function executeAlgorithm(){
   printEfficientRoads(efficientRoadsCollection);
   printInefficientRoads(inefficientRoadsCollection);
   blinkingInefficientRoads(inefficientRoadsCollection);
+  disablePlayButton();
 
   //DEBUGGING
   if(inefficientRoadsCollection.length > 0){
@@ -89,5 +90,10 @@ function getInefficientRoads(inefficientRoadsArray, shortestPath){
   var inefficientRoads = cy.collection(inefficientRoadsArray);
 
   return inefficientRoads;
+}
+
+function disablePlayButton(){
+  var playbutton = document.getElementById("play");
+  playbutton.disabled = true;
 }
 
