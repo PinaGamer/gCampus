@@ -18,6 +18,38 @@ function UneffEdgeSelected(edge){
   })
 }
 
+function blinkingIneffEdge(edge){
+
+  var times = 3;
+
+  for(var i = 0 ; i < times ; i++)
+    blinkEdge(edge);
+
+  //Nested function
+  function blinkEdge(edge){
+    edge.animate({
+    style: {
+      'opacity': '1'
+    }
+    },{
+    duration: 500
+    })
+    .delay(200)
+    .animate({
+      style: {
+        'opacity': '0'
+      }
+    },{
+      duration: 500
+    })
+  }
+}
+
+function blinkingInefficientRoads(inefficientRoads){
+  for(var i = 0 ; i < inefficientRoads.length ; i++)
+    blinkingIneffEdge(inefficientRoads[i]);
+}
+
 function printEfficientRoads(efficientRoads){
   for(var i = 0 ; i < efficientRoads.length ; i++)
     EffEdgeSelected(efficientRoads[i]);

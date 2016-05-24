@@ -63,6 +63,8 @@ function executeAlgorithm(){
 
   efficientRoadsCollection = cy.edges(!inefficientRoadsCollection);
   printEfficientRoads(efficientRoadsCollection);
+  printInefficientRoads(inefficientRoadsCollection);
+  blinkingInefficientRoads(inefficientRoadsCollection);
 
   //DEBUGGING
   if(inefficientRoadsCollection.length > 0){
